@@ -49,7 +49,7 @@ router.get('/:carId/details', async (req, res) => {
         // console.log(car)
         res.json(car)
     } catch (error) {
-        res.json({ message: error.message })
+        res.status(400).json({ message: error.message })
     }
 })
 
@@ -61,9 +61,9 @@ router.delete('/:carId/delete', async (req, res) => {
 
         res.status(200).json(result)
 
-    } catch (err) {
+    } catch (error) {
 
-        console.log(err)
+        res.status(400).json({ message: error.message })
     }
 
 })
@@ -76,8 +76,8 @@ router.put('/:carId/edit', async (req, res) => {
         let carData = await carService.getOne(req.params.carId)
 
         res.status(200).json(carData)
-    } catch (err) {
-        res.status(400).json(err)
+    } catch (error) {
+        res.status(400).json({ message: error.message })
 
     }
 })
@@ -96,8 +96,8 @@ router.post('/:carId/likes', async (req, res) => {
         // console.log(carData)
         console.log(car)
         res.status(200).json(car)
-    } catch (err) {
-        console.log(err)
+    } catch (error) {
+        res.status(400).json({ message: error.message })
     }
 })
 
@@ -114,8 +114,8 @@ router.post('/:carId/dislikes', async (req, res) => {
         // console.log(carData)
         console.log(car)
         res.status(200).json(car)
-    } catch (err) {
-        console.log(err)
+    } catch (error) {
+        res.status(400).json({ message: error.message })
     }
 })
 
